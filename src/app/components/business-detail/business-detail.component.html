@@ -1,0 +1,42 @@
+<div class="well profile">
+  <div class="col-sm-12">
+    <div class="col-xs-12 col-sm-8">
+
+      <h2><a href="{{redirectTo('')}}" target="_blank">{{user.name}}</a></h2>
+
+      <p *ngIf="user.location"><strong>Location: </strong> <br /> {{user.location}} </p>
+      <p *ngIf="user.bio"><strong>Bio: </strong> <br /> {{user.bio}} </p>
+      <p *ngIf="user.organizations.length > 0"><strong>Organizations: </strong> <br/>
+        <span *ngFor="let org of user.organizations" class="tags"> {{org}} </span>
+      </p>
+    </div>
+    <div class="col-xs-12 col-sm-4 text-center">
+      <figure>
+        <img *ngIf="user.avatarUrl" [src]="user.avatarUrl" alt="" class="img-circle img-responsive">
+      </figure>
+    </div>
+  </div>
+  <div class="col-xs-12 text-center divider">
+    <div class="col-xs-12 col-sm-4 emphasis">
+      <h2><strong> {{kFormatter(user.followers)}} </strong></h2>
+      <p><small>Followers</small></p>
+      <a href="{{redirectTo('?tab=followers')}}" target="_blank">
+      <button class="btn btn-success btn-block"> <i class="material-icons">group</i> </button>
+      </a>
+    </div>
+    <div class="col-xs-12 col-sm-4 emphasis">
+      <h2><strong> {{kFormatter(user.following)}} </strong></h2>
+      <p><small>Following</small></p>
+      <a href="{{redirectTo('?tab=following')}}" target="_blank">
+      <button class="btn btn-success btn-block"> <i class="material-icons">visibility</i> </button>
+      </a>
+    </div>
+    <div class="col-xs-12 col-sm-4 emphasis">
+      <h2><strong> {{kFormatter(user.publicRepos)}} </strong></h2>
+      <p><small>Repositories</small></p>
+      <a href="{{redirectTo('?tab=repositories')}}" target="_blank">
+      <button class="btn btn-primary btn-block "> <i class="material-icons ">code</i> </button>
+      </a>
+    </div>
+  </div>
+</div>

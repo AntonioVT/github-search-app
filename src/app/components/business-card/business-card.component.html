@@ -1,0 +1,38 @@
+<div class="card-container">
+  <div class="card">
+    <div class="front">
+      <div class="cover" [style.backgroundColor]="user.isAdmin ? '#43a047': '#6d4c41'">
+      </div>
+      <div class="user">
+        <img class="img-circle" [src]="user.avatarUrl" />
+      </div>
+      <div class="content">
+        <div class="main">
+          <a [routerLink]="['/user', user.username]">
+            <h3 class="name">{{user.username}}</h3>
+          </a>
+          <p *ngIf="user.isAdmin; else notAdmin" class="profession" style="color: #4caf50">GitHub Staff</p>
+          <ng-template #notAdmin>
+            <p class="profession">User</p>
+          </ng-template>
+          <div class="stats-container">
+            <div class="stats">
+              <a href="{{redirectTo('')}}" target="_blank">
+                <h4><i class="material-icons">account_box</i></h4>
+                <p> Profile </p>
+              </a>
+            </div>
+            <div class="stats">
+              <a href="{{redirectTo('?tab=repositories')}}" target="_blank">
+                <h4><i class="material-icons">work</i></h4>
+                <p> Work </p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end front panel -->
+  </div>
+  <!-- end card -->
+</div>
