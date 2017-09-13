@@ -6,13 +6,16 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './views/home/home.component';
 import { UserComponent } from './views/user/user.component';
 import { NotFoundComponent } from './views/not-found/not-found.component';
+import { AllmedicalrecordsComponent } from './views/allmedicalrecords/allmedicalrecords.component';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'user/:id', component: UserComponent },
+    { path: 'medicalrecords', component: AllmedicalrecordsComponent },
+    { path: 'medicalrecords/:id', component: UserComponent },
     { path: '404', component: NotFoundComponent },
     { path: '**', redirectTo: '/404' }
-]
+];
 
 @NgModule({
     imports: [RouterModule.forRoot(appRoutes)],
