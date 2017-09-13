@@ -9,6 +9,7 @@ import { DropdownDirective } from './directives/dropdown.directive';
 
 // Services
 import { GitApiService } from './services/git-api.service';
+import { BackendApiService } from './services/backendapi.service';
 import { ModalComponent } from './components/modal/modal.component';
 import { HttpModule } from "@angular/http";
 import { BusinessCardComponent } from './components/business-card/business-card.component';
@@ -17,6 +18,7 @@ import { NotFoundComponent } from './views/not-found/not-found.component';
 import { UserComponent } from './views/user/user.component';
 import { BusinessDetailComponent } from './components/business-detail/business-detail.component';
 import { BlankDirective } from './directives/blank.directive';
+import { AllmedicalrecordsComponent } from './views/allmedicalrecords/allmedicalrecords.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { BlankDirective } from './directives/blank.directive';
     NotFoundComponent,
     UserComponent,
     BusinessDetailComponent,
-    BlankDirective
+    BlankDirective,
+    AllmedicalrecordsComponent
   ],
   imports: [
     AppRoutingModule,
@@ -37,7 +40,7 @@ import { BlankDirective } from './directives/blank.directive';
     HttpModule,
     FormsModule
   ],
-  providers: [GitApiService],
+  providers: [GitApiService, BackendApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
