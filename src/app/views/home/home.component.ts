@@ -1,6 +1,7 @@
 import { GithubUser } from './../../classes/github-user';
 import { GitApiService } from './../../services/git-api.service';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from "rxjs/Observable";
 
 @Component({
   selector: 'app-home',
@@ -9,35 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  userList: GithubUser[] = new Array();
+  userList: Observable<GithubUser[]>;
 
   constructor(private gitApi: GitApiService) { }
 
   ngOnInit() {
-    this.loadUsers();
-  }
-
-  loadUsers() {
-    var vm = this;
-    var u = this.gitApi.getUsers();
-
-    u.then(response => {
-      var data = response.json();
-
-      for (var i = 0; i < 15; i++) {
-        var d = data[i];
-        var gu = new GithubUser();
-        gu.setUserInfo(d.login, d.avatar_url, d.site_admin);
-        vm.userList.push(gu);
-      }
-
-      vm.userList.sort(function (a, b) {
+    this.userList = this.gitApi.getUsersObservable();
+    this.userList = this.userList.map( (data) => {
+      data.sort(function (a, b) {
         return b.isAdmin && a.isAdmin ? 0 : b.isAdmin ? 1 : -1;
       })
-
-    }).catch(error => {
-      // Show error message
-    })
+      return data;
+    });
   }
 
 }

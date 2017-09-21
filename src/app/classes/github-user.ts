@@ -11,7 +11,7 @@ export class GithubUser {
     public location: string;
     public bio: string;
 
-    public organizations: string[] = new Array();
+    public organizations: string[];
 
     public setUserInfo(username: string, avatarUrl: string, isAdmin: boolean) {
         this.username = username;

@@ -1,3 +1,4 @@
+import { GitApiRouteActivatorService } from './services/git-api-route-activator.service';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -11,7 +12,7 @@ import { DropdownDirective } from './directives/dropdown.directive';
 import { GitApiService } from './services/git-api.service';
 import { BackendApiService } from './services/backendapi.service';
 import { ModalComponent } from './components/modal/modal.component';
-import { HttpModule } from "@angular/http";
+import { HttpModule } from '@angular/http';
 import { BusinessCardComponent } from './components/business-card/business-card.component';
 import { HomeComponent } from './views/home/home.component';
 import { NotFoundComponent } from './views/not-found/not-found.component';
@@ -19,6 +20,7 @@ import { UserComponent } from './views/user/user.component';
 import { BusinessDetailComponent } from './components/business-detail/business-detail.component';
 import { BlankDirective } from './directives/blank.directive';
 import { AllmedicalrecordsComponent } from './views/allmedicalrecords/allmedicalrecords.component';
+import { UserDetailComponent } from './views/user/user-detail/user-detail.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { AllmedicalrecordsComponent } from './views/allmedicalrecords/allmedical
     UserComponent,
     BusinessDetailComponent,
     BlankDirective,
-    AllmedicalrecordsComponent
+    AllmedicalrecordsComponent,
+    UserDetailComponent
   ],
   imports: [
     AppRoutingModule,
@@ -40,7 +43,7 @@ import { AllmedicalrecordsComponent } from './views/allmedicalrecords/allmedical
     HttpModule,
     FormsModule
   ],
-  providers: [GitApiService, BackendApiService],
+  providers: [GitApiService, BackendApiService, GitApiRouteActivatorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

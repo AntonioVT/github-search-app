@@ -20,7 +20,8 @@ export class BusinessDetailComponent implements OnInit {
   }
 
   redirectTo(path: string) {
-    return 'https://github.com/' + this.user.username + path;
+    if (this.user)
+      return 'https://github.com/' + this.user.username + path;
   }
 
 }

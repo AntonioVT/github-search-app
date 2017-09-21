@@ -1,3 +1,5 @@
+import { UserDetailComponent } from './views/user/user-detail/user-detail.component';
+import { GitApiRouteActivatorService } from './services/git-api-route-activator.service';
 // Angular libs
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -10,7 +12,11 @@ import { AllmedicalrecordsComponent } from './views/allmedicalrecords/allmedical
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
-    { path: 'user/:id', component: UserComponent },
+    {
+        path: 'user/:id', component: UserComponent, canActivate: [GitApiRouteActivatorService], children: [
+            { path: '', component: UserDetailComponent },
+        ]
+    },
     { path: 'medicalrecords', component: AllmedicalrecordsComponent },
     { path: 'medicalrecords/:id', component: UserComponent },
     { path: '404', component: NotFoundComponent },
